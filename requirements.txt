@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+matplotlib
+seaborn
+fastapi
+category-encoders
+uvicorn
+pydantic
+numpy
+streamlit
