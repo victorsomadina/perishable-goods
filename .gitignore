@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 venv/
 perishable_dataset/
+rf_model.pkl

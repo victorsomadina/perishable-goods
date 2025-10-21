@@ -7,15 +7,14 @@ from typing import List, Dict, Any
 import os
 import uvicorn
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
 app = FastAPI(title = 'Perishable Goods Prediction API', version = '1.0')
 
 class Item(BaseModel):
-    records: List[Dict[str, Any]] = Field(
-        ..., 
-        example = [
+    records: List[Dict[str, Any]] = Field(..., example = [
             {
                 "Wastage_Units": 100,
                 "Product_Name": "Whole Wheat Bread 800g",
@@ -40,6 +39,13 @@ def predict(req: Item):
         model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'rf_model.pkl')
         with open(model_path, 'rb') as f:
             model = pickle.load(f)
+
+        schema_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'schema.json')
+        with open(schema_path, 'r') as f:
+            feature = json.load(f)
+            main_features = feature['features']
+
+        cleaned_data = cleaned_data.reindex(columns = main_features, fill_value=0)
         
         pred = model.predict(cleaned_data)
 
