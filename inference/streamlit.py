@@ -32,7 +32,7 @@ if submitted:
             "Avg_Temperature": avg_temp,
             "Region": region
         }
-        api_url = "https://vfdfwz42-8000.uks1.devtunnels.ms/"
+        api_url = ""https://vfdfwz42-8000.uks1.devtunnels.ms/predict""
         response = requests.post(url = api_url, json = {"records": [data]})
 
         if response.status_code == 200:
