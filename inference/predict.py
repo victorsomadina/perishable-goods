@@ -15,17 +15,24 @@ app = FastAPI(title = 'Perishable Goods Prediction API', version = '1.0')
 
 class Item(BaseModel):
     records: List[Dict[str, Any]] = Field(..., example = [
-            {
+            {   
+                "Product_ID": 1,
+                "Store_ID": 1,
                 "Wastage_Units": 100,
                 "Product_Name": "Whole Wheat Bread 800g",
                 "Product_Category": "Bakery",
-                "Shelf_Life_Days ": 3,
+                "Shelf_Life_Days": 3,
                 "Price": 2.5,
                 "Cold_Storage_Capacity": 500,
                 "Store_Size": 1500,
                 "Rainfall": 20.5,
                 "Avg_Temperature": 22.3,
-                "Region": "North"
+                "Region": "North",
+                "Supplier_Name": "Fresh Foods Ltd",
+                "Supply_Capacity": 50000,
+                "Marketing_Spend": 500.0,
+                "Month": 1,
+                "Day": 15,
             }
         ]
     )
